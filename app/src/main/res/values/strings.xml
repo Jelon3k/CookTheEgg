@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Cook The Egg</string>
+    <string name="soft_egg">Na miękko</string>
+    <string name="half_soft_egg">Półtwardo</string>
+    <string name="hard_egg">Na Twardo</string>
+    <string name="in_tshirt_egg">W koszulce</string>
+</resources>
