@@ -19,7 +19,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="W jaki sposób chcesz przyżadzić jajko ?"
+            android:text="W jaki sposób chcesz przyrzadzić jajko ?"
             android:paddingBottom="20dp"/>
 
         <ImageButton

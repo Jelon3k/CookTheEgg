@@ -24,28 +24,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tShirtEgg.setOnClickListener(this);
         Log.d(TAG,"onCreate" + this.toString() );
 
+
+
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.softEggBtn: {
-                Intent intent = new Intent(getApplicationContext(), SoftEggActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BeforeSoftEggActivity.class);
                 startActivity(intent);
                 break;
             }
             case R.id.halfSoftEggBtn: {
-                Intent intent = new Intent(getApplicationContext(),HalfSoftEggActivity.class);
+                Intent intent = new Intent(getApplicationContext(),BeforeHalfSoftEggActivity.class);
                 startActivity(intent);
                 break;
             }
             case R.id.hardEggBtn:{
-                Intent intent = new Intent(getApplicationContext(),HardEggActivity.class);
+                Intent intent = new Intent(getApplicationContext(),BeforeHardEggActivity.class);
                 startActivity(intent);
                 break;
             }
             case R.id.tShirtEggBtn:{
-                Intent intent = new Intent(getApplicationContext(),TshirtEggActivity.class);
+                Intent intent = new Intent(getApplicationContext(),BeforeTshirtEggActivity.class);
                 startActivity(intent);
             }
         }

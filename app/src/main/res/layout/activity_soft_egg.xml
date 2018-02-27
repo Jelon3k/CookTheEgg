@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="00:05:00"
-        android:textColor="@color/colorYellow"
+        android:textColor="@color/colorBlue"
         android:textSize="40sp" />
 
     <ImageView
@@ -40,16 +40,9 @@
         android:layout_below="@+id/textViewTime"
         android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
-        android:src="@drawable/icon_reset"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/imageViewStartStop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/progressBarCircle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/icon_start" />
+
+
 
 </RelativeLayout>

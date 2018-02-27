@@ -16,14 +16,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SoftEggActivity"
-            android:label="@string/soft_egg"/>
-        <activity android:name=".HalfSoftEggActivity"
-            android:label="@string/half_soft_egg"/>
-        <activity android:name=".HardEggActivity"
-            android:label="@string/hard_egg"/>
-        <activity android:name=".TshirtEggActivity"
-            android:label="@string/in_tshirt_egg"></activity>
+        <activity
+            android:name=".SoftEggActivity"
+            android:label="@string/soft_egg" />
+        <activity
+            android:name=".HalfSoftEggActivity"
+            android:label="@string/half_soft_egg" />
+        <activity
+            android:name=".HardEggActivity"
+            android:label="@string/hard_egg" />
+        <activity
+            android:name=".TshirtEggActivity"
+            android:label="@string/in_tshirt_egg" />
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".BeforeSoftEggActivity" />
+        <activity android:name=".BeforeHalfSoftEggActivity" />
+        <activity android:name=".BeforeHardEggActivity" />
+        <activity android:name=".BeforeTshirtEggActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

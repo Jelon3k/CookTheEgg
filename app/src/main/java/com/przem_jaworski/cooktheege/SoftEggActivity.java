@@ -1,8 +1,9 @@
 package com.przem_jaworski.cooktheege;
-
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SoftEggActivity extends AppCompatActivity implements View.OnClickListener {
     private long timeCountInMilliSeconds = 1 * 60000;
+    private static final String TAG = SoftEggActivity.class.getSimpleName();
 
     private enum TimerStatus {
         STARTED,
@@ -23,8 +25,9 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
     private ProgressBar progressBarCircle;
     private TextView textViewTime;
     private ImageView imageViewReset;
-    private ImageView imageViewStartStop;
     private CountDownTimer countDownTimer;
+    private MediaPlayer mediaPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +37,29 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
         initViews();
         // method call to initialize the listeners
         initListeners();
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.song);
+        Log.d(TAG, "onCreate" + this.toString());
+        startStop();
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+       // mediaPlayer.stop();
+        Log.d(TAG, "onPause" + this.toString());
+
+    }
+
 
     /**
      * method to initialize the views
      */
     private void initViews() {
         progressBarCircle = findViewById(R.id.progressBarCircle);
-        textViewTime =  findViewById(R.id.textViewTime);
-        imageViewReset =  findViewById(R.id.imageViewReset);
-        imageViewStartStop =  findViewById(R.id.imageViewStartStop);
+        textViewTime = findViewById(R.id.textViewTime);
+        imageViewReset = findViewById(R.id.imageViewReset);
+
     }
 
     /**
@@ -52,7 +67,7 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
      */
     private void initListeners() {
         imageViewReset.setOnClickListener(this);
-        imageViewStartStop.setOnClickListener(this);
+
     }
 
     /**
@@ -66,9 +81,7 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.imageViewReset:
                 reset();
                 break;
-            case R.id.imageViewStartStop:
-                startStop();
-                break;
+
         }
     }
 
@@ -84,6 +97,8 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
     /**
      * method to start and stop count down timer
      */
+
+
     private void startStop() {
         if (timerStatus == TimerStatus.STOPPED) {
 
@@ -93,11 +108,10 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
             setProgressBarValues();
             // showing the reset icon
             imageViewReset.setVisibility(View.VISIBLE);
-            // changing play icon to stop icon
-            imageViewStartStop.setImageResource(R.drawable.icon_stop);
 
             // changing the timer status to started
             timerStatus = TimerStatus.STARTED;
+
             // call to start the count down timer
             startCountDownTimer();
 
@@ -105,10 +119,9 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
 
             // hiding the reset icon
             imageViewReset.setVisibility(View.GONE);
-            // changing stop icon to start icon
-            imageViewStartStop.setImageResource(R.drawable.icon_start);
             // changing the timer status to stopped
             timerStatus = TimerStatus.STOPPED;
+
             stopCountDownTimer();
 
         }
@@ -119,8 +132,7 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
      * method to initialize the values for count down timer
      */
     private void setTimerValues() {
-        int time = 5;
-
+        int time = 1;
         // assigning values after converting to milliseconds
         timeCountInMilliSeconds = time * 60 * 1000;
     }
@@ -149,20 +161,26 @@ public class SoftEggActivity extends AppCompatActivity implements View.OnClickLi
                 // hiding the reset icon
                 imageViewReset.setVisibility(View.GONE);
                 // changing stop icon to start icon
-                imageViewStartStop.setImageResource(R.drawable.icon_start);
                 // making edit text editable
+
                 timerStatus = TimerStatus.STOPPED;
+                textViewTime.setText("Ugotowane");
+                mediaPlayer.start();
+
             }
 
         }.start();
         countDownTimer.start();
     }
 
+
     /**
      * method to stop count down timer
      */
     private void stopCountDownTimer() {
+
         countDownTimer.cancel();
+        mediaPlayer.start();
     }
 
     /**
